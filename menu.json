@@ -1,0 +1,142 @@
+{
+  "coffee": {
+    "Coffee Drinks": {
+      "Hot Coffee": {
+        "small": 3.45,
+        "medium": 3.65,
+        "large": 3.85
+      },
+      "Iced Coffee": {
+        "small": 3.95,
+        "medium": 4.45,
+        "large": 4.75
+      },
+      "Espresso": {
+        "single": 2.95,
+        "double": 3.25
+      },
+      "Americano": {
+        "small": 3.75,
+        "medium": 3.95,
+        "large": 4.25
+      },
+      "Cappuccino": {
+        "small": 4.45,
+        "medium": 4.95,
+        "large": 5.45
+      },
+      "Café Latte": {
+        "small": 4.45,
+        "medium": 4.95,
+        "large": 5.45
+      },
+      "Vanilla Latte": {
+        "small": 5.25,
+        "medium": 5.65,
+        "large": 5.95
+      },
+      "Mocha": {
+        "small": 5.25,
+        "medium": 5.65,
+        "large": 5.95
+      },
+      "Caramel Macchiato": {
+        "small": 5.25,
+        "medium": 5.75,
+        "large": 5.95
+      }
+    },
+    "Tea & More": {
+      "Hot Tea": {
+        "small": 3.25,
+        "medium": 3.75,
+        "large": 3.95
+      },
+      "Iced Tea": {
+        "small": 3.75,
+        "medium": 3.95,
+        "large": 4.25
+      },
+      "Iced Tea Lemonade": {
+        "small": 3.95,
+        "medium": 4.45,
+        "large": 4.95
+      },
+      "Chai Tea Latte": {
+        "small": 4.95,
+        "medium": 5.25,
+        "large": 5.65
+      },
+      "Hot Chocolate": {
+        "small": 3.95,
+        "medium": 4.65,
+        "large": 4.95
+      }
+    },
+    "Extras": {
+      "Extra Espresso Shot": {
+        "price": 1.25
+      },
+      "Extra Flavor Shot": {
+        "price": 0.80
+      },
+      "Almond Milk": {
+        "price": 0.80
+      }
+    }
+  },
+  "smoothies": {
+    "Protein & Fruit Smoothies": {
+      "Mango Sunrise": {
+        "small": 5.00,
+        "large": 9.00
+      },
+      "Very Berry Chocolate Protein": {
+        "small": 5.50,
+        "large": 10.00
+      },
+      "Double Chocolate Peanut Butter Protein": {
+        "small": 5.50,
+        "large": 10.00
+      },
+      "Tropi Kale": {
+        "small": 5.00,
+        "large": 9.00
+      }
+    }
+  },
+  "food": {
+    "Hot Sandwiches": {
+      "Chicken & Bacon Melt": {
+        "price": 9.00
+      },
+      "Maple Ham & Swiss Melt": {
+        "price": 9.00
+      },
+      "Three Cheese Melt": {
+        "price": 8.00
+      }
+    },
+    "Bagels": {
+      "Plain": 3.25,
+      "Everything": 3.25,
+      "Sesame": 3.25,
+      "Cinnamon Raisin": 3.25,
+      "Add Cream Cheese": 1.00
+    },
+    "Baked Goods": {
+      "Muffins": {
+        "price": 4.00
+      },
+      "Croissants": {
+        "price": 4.50
+      },
+      "Cookies": {
+        "price": 3.50
+      },
+      "Scones": {
+        "price": 4.25
+      }
+    }
+  }
+}
