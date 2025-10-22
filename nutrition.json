@@ -1,0 +1,55 @@
+{
+  "coffee": {
+    "Coffee Drinks": {
+      "Hot Coffee": { "calories": 34, "carbs_g": 4, "protein_g": 0, "fat_g": 0 },
+      "Iced Coffee": { "calories": 34, "carbs_g": 4, "protein_g": 0, "fat_g": 0 },
+      "Espresso": { "calories": 8, "carbs_g": 1, "protein_g": 0, "fat_g": 0 },
+      "Americano": { "calories": 34, "carbs_g": 4, "protein_g": 1, "fat_g": 0 },
+      "Cappuccino": { "calories": 170, "carbs_g": 23, "protein_g": 9, "fat_g": 6 },
+      "Café Latte": { "calories": 170, "carbs_g": 23, "protein_g": 9, "fat_g": 6 },
+      "Vanilla Latte": { "calories": 240, "carbs_g": 37, "protein_g": 9, "fat_g": 6 },
+      "Mocha": { "calories": 290, "carbs_g": 38, "protein_g": 9, "fat_g": 8 },
+      "Caramel Macchiato": { "calories": 282, "carbs_g": 47, "protein_g": 9, "fat_g": 6 }
+    },
+    "Tea & More": {
+      "Hot Tea": { "calories": 0, "carbs_g": 0, "protein_g": 0, "fat_g": 0 },
+      "Iced Tea": { "calories": 0, "carbs_g": 0, "protein_g": 0, "fat_g": 0 },
+      "Iced Tea Lemonade": { "calories": 70, "carbs_g": 18, "protein_g": 0, "fat_g": 0 },
+      "Chai Tea Latte": { "calories": 200, "carbs_g": 42, "protein_g": 8, "fat_g": 4 },
+      "Hot Chocolate": { "calories": 250, "carbs_g": 45, "protein_g": 9, "fat_g": 7 }
+    },
+    "Extras": {
+      "Extra Espresso Shot": { "calories": 34, "carbs_g": 4, "protein_g": 1, "fat_g": 0 },
+      "Extra Flavor Shot": { "calories": 0, "carbs_g": 0, "protein_g": 0, "fat_g": 0 },
+      "Almond Milk": { "calories": 30, "carbs_g": 1, "protein_g": 1, "fat_g": 2 }
+    }
+  },
+  "smoothies": {
+    "Protein & Fruit Smoothies": {
+      "Mango Sunrise": { "calories": 206, "carbs_g": 53, "protein_g": 2, "fat_g": 0 },
+      "Very Berry Chocolate Protein": { "calories": 294, "carbs_g": 40, "protein_g": 18, "fat_g": 6 },
+      "Double Chocolate Peanut Butter Protein": { "calories": 646, "carbs_g": 74, "protein_g": 31, "fat_g": 18 },
+      "Tropi Kale": { "calories": 317, "carbs_g": 70, "protein_g": 5, "fat_g": 2 }
+    }
+  },
+  "food": {
+    "Hot Sandwiches": {
+      "Chicken & Bacon Melt": { "calories": 832, "carbs_g": 57, "protein_g": 46, "fat_g": 45 },
+      "Maple Ham & Swiss Melt": { "calories": 532, "carbs_g": 58, "protein_g": 28, "fat_g": 18 },
+      "Three Cheese Melt": { "calories": 582, "carbs_g": 51, "protein_g": 27, "fat_g": 24 }
+    },
+    "Bagels": {
+      "Plain": { "calories": 240, "carbs_g": 48, "protein_g": 9, "fat_g": 1 },
+      "Everything": { "calories": 278, "carbs_g": 56, "protein_g": 10, "fat_g": 2 },
+      "Sesame": { "calories": 278, "carbs_g": 56, "protein_g": 10, "fat_g": 2 },
+      "Cinnamon Raisin": { "calories": 339, "carbs_g": 66, "protein_g": 9, "fat_g": 1 },
+      "Cream Cheese": { "calories": 66, "carbs_g": 2, "protein_g": 1, "fat_g": 6 }
+    },
+    "Baked Goods": {
+      "Muffins": { "calories": 510, "carbs_g": 76, "protein_g": 6, "fat_g": 20 },
+      "Croissants": { "calories": 260, "carbs_g": 43, "protein_g": 5, "fat_g": 12 },
+      "Cookies": { "calories": 500, "carbs_g": 65, "protein_g": 6, "fat_g": 22 },
+      "Scones": { "calories": 440, "carbs_g": 67, "protein_g": 8, "fat_g": 15 }
+    }
+  }
+}

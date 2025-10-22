@@ -6,6 +6,123 @@
     <meta name="keywords" content="coffee, cafe, menu, kindlevan">
     <title>Kindlevan Café - Menu</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Inspired by The Capitol Coffeehouse Site: https://www.thecapitolcoffeehouse.com/menu -->
+    <style>
+        main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main h1 {
+            margin-top: 40px;
+        }
+
+        .menu-options-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .menu-options-box input {
+            display: none;
+        }
+
+        .menu-options-box label {
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* Referenced article for styling label when button checked: https://stackoverflow.com/questions/5275857/highlight-label-if-checkbox-is-checked */
+        .menu-options-box input:checked + label {
+            border-bottom: 1.5px black solid;
+        }
+
+        .coffee-pic {
+            width: min(700px, 90vw);
+            height: auto;
+            aspect-ratio: 7 / 3;
+            background-image: url("img/coffee.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 1rem;
+            margin: 30px 0;
+            transition: background-image 0.3s ease;
+        }
+
+        .coffee-pic.smoothies {
+            background-image: url("img/SmoothieKindlevan.jpg");
+        }
+
+        .coffee-pic.food {
+            background-image: url("img/Sandwich.jpg");
+        }
+
+        /* Referenced this article for two column uls: https://www.tutorialspoint.com/how-to-display-unordered-list-in-two-columns */
+        .menu-section > ul {
+            column-count: 2;
+            column-gap: 50px;
+        }
+
+        .menu-section > ul.single-column {
+            column-count: 1;
+        }
+
+        ul li {
+            margin-left: 20px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        ul li .item-span {
+            display: inline-block;
+            width: 300px;
+        }
+
+        /* Referenced this for styling children not at beginning: https://www.geeksforgeeks.org/css/how-to-use-a-notfirst-child-selector-in-css/ */
+        .category-block:not(:first-child) .menu-category {
+            margin-top: 30px;
+        }
+
+        .menu-category {
+            break-after: avoid;
+            page-break-after: avoid;
+            margin-bottom: 10px;
+        }
+
+        .category-block {
+            list-style: none;
+            margin-left: 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .category-block > ul {
+            list-style-type: square;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .menu-options-box { gap: 12px; }
+            .menu-options-box label h2 { font-size: 1.5rem; }
+            .menu-section > ul { column-count: 1; }
+            ul li .item-span { width: 55vw; }
+        }
+
+        @media (max-width: 600px) {
+            .menu-options-box { grid-template-columns: 1fr; justify-items: center; width: 100%; }
+            .menu-options-box label h2 { font-size: 1.25rem; }
+            .coffee-pic { width: 90vw; }
+            ul li .item-span { width: 65vw; }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,23 +144,28 @@
     </header>
 
     <main>
-        <section class="page-header">
-            <h1>Menu</h1>
+        <h1>Our Menu</h1>
+        
+        <div class="coffee-pic"></div>
+
+        <div class="menu-options-box">
+            <input type="radio" name="menu" id="coffee" checked>
+            <label for="coffee"><h2>Coffee & Tea</h2></label>
+
+            <input type="radio" name="menu" id="smoothies">
+            <label for="smoothies"><h2>Smoothies</h2></label>
+
+            <input type="radio" name="menu" id="food">
+            <label for="food"><h2>Food</h2></label>
+        </div>
+        
+        <section class="menu-section">
+            <ul type="square">
+
+            </ul>
         </section>
-        <section class="menu-categories">
-            <a href="coffee.html" class="category-card">
-                <h2>Coffee</h2>
-                <p>Espresso, Lattes, Cappuccinos & More</p>
-            </a>
-            <a href="smoothies.html" class="category-card">
-                <h2>Smoothies</h2>
-                <p>Fresh Fruit Smoothies & Protein Blends</p>
-            </a>
-            <a href="food.html" class="category-card">
-                <h2>Food</h2>
-                <p>Pastries, Sandwiches & Snacks</p>
-            </a>
-        </section>
+
+
     </main>
 
     <footer>
@@ -54,5 +176,136 @@
             <p>&copy; 2024 Kindlevan Café. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Referenced this article for class creation: https://www.w3schools.com/js/js_classes.asp
+        class menuItem {
+            constructor(name, small, large) {
+                this.name = name;
+                this.small = small;
+                this.large = large;
+            }
+        }
+        // Referenced article for reading in json: https://www.geeksforgeeks.org/javascript/read-json-file-using-javascript/
+        let menu;
+        fetch("menu.json")
+            .then(response => response.json())
+            .then(data => { 
+                menu = data;
+
+                // Manual addition of smoothie
+                const berryBlast = new menuItem("Berry Blast", 4.50, 8.00);
+
+                menu.smoothies["Protein & Fruit Smoothies"][berryBlast.name] = {
+                    small: berryBlast.small,
+                    large: berryBlast.large
+                }
+                
+                const unorderedList = document.querySelector(".menu-section ul");
+                let selected = "coffee";
+
+                populateMenu(selected, unorderedList);
+                
+                const radioButtons = document.querySelectorAll(".menu-options-box input");
+                const radioLabels = document.querySelectorAll(".menu-options-box label");
+                const coffeePic = document.querySelector(".coffee-pic");
+                
+                radioLabels.forEach((button, index) => {
+                    button.onclick = () => {
+                    radioButtons[index].checked = true;
+                    
+                    selected = radioButtons[index].id;
+                    populateMenu(radioButtons[index].id, unorderedList);
+                    
+                    coffeePic.className = "coffee-pic";
+                    if (selected === "smoothies") {
+                        coffeePic.classList.add("smoothies");
+                    } else if (selected === "food") {
+                        coffeePic.classList.add("food");
+                    }
+                }
+                })
+            }) 
+            .catch(error => console.error('Error:', error));
+
+
+        function populateMenu(type, unorderedList) {
+            // Clear current list
+            unorderedList.innerHTML = "";
+
+            if (type === 'smoothies') {
+                unorderedList.classList.add('single-column');
+            } else {
+                unorderedList.classList.remove('single-column');
+            }
+
+             // Referenced docs for forEach syntax: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+            Object.keys(menu[type]).forEach(category => {
+                // Create a block that contains the category title and its items
+                const categoryBlock = document.createElement("li");
+                categoryBlock.classList.add("category-block");
+
+                const categoryTitle = document.createElement("h3");
+                categoryTitle.classList.add("menu-category");
+                categoryTitle.textContent = category;
+                categoryBlock.appendChild(categoryTitle);
+
+                const itemsList = document.createElement("ul");
+
+                Object.keys(menu[type][category]).forEach(item => {
+                    const liEntry = document.createElement("li");
+                    const itemSpan = document.createElement("span");
+                    itemSpan.classList.add("item-span");
+                    itemSpan.textContent = item;
+
+                    liEntry.appendChild(itemSpan);
+                    const priceSpan = document.createElement("span");
+
+                    const itemData = menu[type][category][item];
+                    if (typeof itemData === 'number') {
+                        priceSpan.textContent = `$${itemData.toFixed(2)}`;
+                    } else {
+                        const keys = Object.keys(itemData);
+                        const values = Object.values(itemData);
+                        
+                        values.forEach((price, index) => {
+                            const sizeKey = keys[index];
+                            let sizeLabel = '';
+                            
+                            if (type === 'coffee') {
+                                if (sizeKey === 'small') sizeLabel = 'S';
+                                else if (sizeKey === 'medium') sizeLabel = 'M';
+                                else if (sizeKey === 'large') sizeLabel = 'L';
+                                else if (sizeKey === 'single') sizeLabel = 'Single';
+                                else if (sizeKey === 'double') sizeLabel = 'Double';
+                            } else if (type === 'smoothies') {
+                                if (sizeKey === 'small') sizeLabel = 'S';
+                                else if (sizeKey === 'large') sizeLabel = 'L';
+                            }
+                            
+                            if (sizeLabel) {
+                                priceSpan.textContent += `${sizeLabel} $${price.toFixed(2)}`;
+                            } else {
+                                priceSpan.textContent += `$${price.toFixed(2)}`;
+                            }
+                            
+                            if (index < values.length - 1) {
+                                priceSpan.textContent += " / ";
+                            }
+                        });
+                    }
+
+                    liEntry.appendChild(priceSpan);
+                    itemsList.appendChild(liEntry);
+                })
+
+                categoryBlock.appendChild(itemsList);
+                unorderedList.appendChild(categoryBlock);
+            })
+        }
+        
+        
+
+    </script>
 </body>
 </html>

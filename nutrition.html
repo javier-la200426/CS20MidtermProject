@@ -3,36 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="nutrition, calories, kindlevan">
-    <title>Kindlevan Café - Nutrition</title>
+    <meta name="keywords" content="nutrition, healthy, coffee menu, cafe menu, drinks, food, kindlevan">
+    <title>Nutritional Info - Kindlevan Café</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Inspired by PJ's Coffee site: https://www.pjscoffee.com/nutrition/ -->
+    <style>
+        main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .subcategory-card {
+            margin-top: 50px;
+            background-color: white;
+            border-radius: 1rem;
+            padding: 20px 50px;
+        }
+
+        .item-row {
+            display: flex;
+            border-bottom: 1px solid black;
+        }
+
+        .item-name {
+            width: 200px;
+        }
+
+
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo"> 
+            <div class="logo">
                 <a href="index.html">Kindlevan Café</a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
-                <li><a href="rewards.html">Rewards</a></li>
-                <li><a href="orders.html">Online Orders</a></li>
-                <li><a href="nutrition.html">Nutrition</a></li>
-                <li><a href="hiring.html">Join Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="sourcing.html">Sourcing</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="page-header">
-            <h1>Nutrition</h1>
-        </section>
-        <section class="content-section">
-            <p>Nutrition information coming soon...</p>
-        </section>
+        <h1>Nutritional Facts</h1>
+        <p>Daily values are based on a 2,000 calorie diet. Individual requirements may vary</p>
+        <!-- Nutritional facts collected from Kindlevan site (https://tufts.nutrislice.com/menu/kindlevan-cafe/daily) and compiled with ChatGPT -->
+        <p>Please refer to the <a href="assets/nutrition_table.pdf" target="_blank">Nutritional Brochure</a> for complete nutritional information.</p>
+
     </main>
 
     <footer>
@@ -43,6 +72,55 @@
             <p>&copy; 2024 Kindlevan Café. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        fetch("nutrition.json")
+            .then(response => response.json())
+            .then(data => { 
+                createCards(data)
+            }) 
+            .catch(error => console.error('Error:', error));
+       
+        function createCards(facts) {
+            const mainDiv = document.querySelector("main");
+
+            Object.keys(facts).forEach(category => {
+
+                Object.keys(facts[category]).forEach(subcategory => {
+                    const subcategoryCard = document.createElement("div");
+                    const subcategoryHeader = document.createElement("h2");
+                    subcategoryHeader.innerHTML = subcategory;
+                    subcategoryCard.appendChild(subcategoryHeader);
+                    subcategoryCard.classList.add("subcategory-card");
+                    mainDiv.appendChild(subcategoryCard);
+
+                    Object.keys(facts[category][subcategory]).forEach(item => {
+                        const itemRow = document.createElement("div")
+                        itemRow.classList.add("item-row");
+                        const itemName = document.createElement("p");
+                        itemName.classList.add("item-name");
+                        itemName.innerHTML = item;
+                        itemRow.appendChild(itemName);
+
+                        info = Object.values(facts[category][subcategory][item]);
+                        itemFacts = document.createElement("p");    
+                        itemFacts.innerHTML = `
+                            ${info[0] ? info[0]+"cal" : "—"} &nbsp; &bull; &nbsp; 
+                            ${info[1] ? info[1]+"g" : "—"} carbs &nbsp; &bull; &nbsp; 
+                            ${info[2] ? info[2]+"g" : "—"} protein &nbsp; &bull; &nbsp; 
+                            ${info[3] ? info[3]+"g" : "—"} fat
+                        `
+                        itemRow.appendChild(itemFacts);
+                        
+                        subcategoryCard.appendChild(itemRow);
+                    })
+
+                })
+               
+            })
+            
+        }
+
+    </script>
 </body>
 </html>
-
