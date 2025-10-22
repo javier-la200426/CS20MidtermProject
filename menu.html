@@ -116,6 +116,14 @@
     </footer>
 
     <script>
+        // Referenced this article for class creation: https://www.w3schools.com/js/js_classes.asp
+        class menuItem {
+            constructor(name, small, large) {
+                this.name = name;
+                this.small = small;
+                this.large = large;
+            }
+        }
         // Referenced article for reading in json: https://www.geeksforgeeks.org/javascript/read-json-file-using-javascript/
         let menu;
         fetch("menu.json")
@@ -123,6 +131,14 @@
             .then(data => { 
                 menu = data;
 
+                // Manual addition of smoothie
+                const berryBlast = new menuItem("Berry Blast", 4.50, 8.00);
+
+                menu.smoothies["Protein & Fruit Smoothies"][berryBlast.name] = {
+                    small: berryBlast.small,
+                    large: berryBlast.large
+                }
+                
                 const unorderedList = document.querySelector(".menu-section ul");
                 let selected = "coffee";
 
