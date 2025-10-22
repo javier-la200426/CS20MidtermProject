@@ -17,11 +17,16 @@
             align-items: center;
         }
 
+        main h1 {
+            margin-top: 40px;
+        }
+
         .menu-options-box {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             align-items: center;
             gap: 25px;
+            width: 100%;
         }
 
         .menu-options-box input {
@@ -30,6 +35,7 @@
 
         .menu-options-box label {
             cursor: pointer;
+            text-align: center;
         }
 
         /* Referenced article for styling label when button checked: https://stackoverflow.com/questions/5275857/highlight-label-if-checkbox-is-checked */
@@ -46,22 +52,60 @@
             background-repeat: no-repeat;
             border-radius: 1rem;
             margin: 30px 0;
+            transition: background-image 0.3s ease;
+        }
+
+        .coffee-pic.smoothies {
+            background-image: url("img/SmoothieKindlevan.jpg");
+        }
+
+        .coffee-pic.food {
+            background-image: url("img/Sandwich.jpg");
         }
 
         /* Referenced this article for two column uls: https://www.tutorialspoint.com/how-to-display-unordered-list-in-two-columns */
-        ul {
+        .menu-section > ul {
             column-count: 2;
             column-gap: 50px;
         }
 
+        .menu-section > ul.single-column {
+            column-count: 1;
+        }
+
+        ul li {
+            margin-left: 20px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
         ul li .item-span {
             display: inline-block;
-            width: 200px;
+            width: 300px;
         }
 
         /* Referenced this for styling children not at beginning: https://www.geeksforgeeks.org/css/how-to-use-a-notfirst-child-selector-in-css/ */
-        .menu-category:not(:first-child) {
+        .category-block:not(:first-child) .menu-category {
             margin-top: 30px;
+        }
+
+        .menu-category {
+            break-after: avoid;
+            page-break-after: avoid;
+            margin-bottom: 10px;
+        }
+
+        .category-block {
+            list-style: none;
+            margin-left: 0;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .category-block > ul {
+            list-style-type: square;
+            padding-left: 0;
+            margin: 0;
         }
     </style>
 </head>
@@ -149,12 +193,21 @@
                 
                 const radioButtons = document.querySelectorAll(".menu-options-box input");
                 const radioLabels = document.querySelectorAll(".menu-options-box label");
+                const coffeePic = document.querySelector(".coffee-pic");
+                
                 radioLabels.forEach((button, index) => {
                     button.onclick = () => {
                     radioButtons[index].checked = true;
                     
                     selected = radioButtons[index].id;
                     populateMenu(radioButtons[index].id, unorderedList);
+                    
+                    coffeePic.className = "coffee-pic";
+                    if (selected === "smoothies") {
+                        coffeePic.classList.add("smoothies");
+                    } else if (selected === "food") {
+                        coffeePic.classList.add("food");
+                    }
                 }
                 })
             }) 
@@ -165,13 +218,24 @@
             // Clear current list
             unorderedList.innerHTML = "";
 
+            if (type === 'smoothies') {
+                unorderedList.classList.add('single-column');
+            } else {
+                unorderedList.classList.remove('single-column');
+            }
+
              // Referenced docs for forEach syntax: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
             Object.keys(menu[type]).forEach(category => {
-                const liCategory = document.createElement("h3");
-                liCategory.classList.add("menu-category");
-                liCategory.textContent = category;
+                // Create a block that contains the category title and its items
+                const categoryBlock = document.createElement("li");
+                categoryBlock.classList.add("category-block");
 
-                unorderedList.appendChild(liCategory);
+                const categoryTitle = document.createElement("h3");
+                categoryTitle.classList.add("menu-category");
+                categoryTitle.textContent = category;
+                categoryBlock.appendChild(categoryTitle);
+
+                const itemsList = document.createElement("ul");
 
                 Object.keys(menu[type][category]).forEach(item => {
                     const liEntry = document.createElement("li");
@@ -182,22 +246,46 @@
                     liEntry.appendChild(itemSpan);
                     const priceSpan = document.createElement("span");
 
-                    Object.values(menu[type][category][item]).forEach((price, index, arr) => {
-                        priceSpan.textContent += `$${price.toFixed(2)}`; 
-                    
-                        if (index < arr.length - 1) {
-                            priceSpan.textContent += " / ";
-                        }
-
-                    })
+                    const itemData = menu[type][category][item];
+                    if (typeof itemData === 'number') {
+                        priceSpan.textContent = `$${itemData.toFixed(2)}`;
+                    } else {
+                        const keys = Object.keys(itemData);
+                        const values = Object.values(itemData);
+                        
+                        values.forEach((price, index) => {
+                            const sizeKey = keys[index];
+                            let sizeLabel = '';
+                            
+                            if (type === 'coffee') {
+                                if (sizeKey === 'small') sizeLabel = 'S';
+                                else if (sizeKey === 'medium') sizeLabel = 'M';
+                                else if (sizeKey === 'large') sizeLabel = 'L';
+                                else if (sizeKey === 'single') sizeLabel = 'Single';
+                                else if (sizeKey === 'double') sizeLabel = 'Double';
+                            } else if (type === 'smoothies') {
+                                if (sizeKey === 'small') sizeLabel = 'S';
+                                else if (sizeKey === 'large') sizeLabel = 'L';
+                            }
+                            
+                            if (sizeLabel) {
+                                priceSpan.textContent += `${sizeLabel} $${price.toFixed(2)}`;
+                            } else {
+                                priceSpan.textContent += `$${price.toFixed(2)}`;
+                            }
+                            
+                            if (index < values.length - 1) {
+                                priceSpan.textContent += " / ";
+                            }
+                        });
+                    }
 
                     liEntry.appendChild(priceSpan);
-                    unorderedList.appendChild(liEntry);
+                    itemsList.appendChild(liEntry);
                 })
 
-
-
-          
+                categoryBlock.appendChild(itemsList);
+                unorderedList.appendChild(categoryBlock);
             })
         }
         
