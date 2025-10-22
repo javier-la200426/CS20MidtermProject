@@ -44,8 +44,9 @@
         }
 
         .coffee-pic {
-            width: 700px;
-            height: 300px;
+            width: min(700px, 90vw);
+            height: auto;
+            aspect-ratio: 7 / 3;
             background-image: url("img/coffee.jpg");
             background-size: cover;
             background-position: center;
@@ -106,6 +107,20 @@
             list-style-type: square;
             padding-left: 0;
             margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .menu-options-box { gap: 12px; }
+            .menu-options-box label h2 { font-size: 1.5rem; }
+            .menu-section > ul { column-count: 1; }
+            ul li .item-span { width: 55vw; }
+        }
+
+        @media (max-width: 600px) {
+            .menu-options-box { grid-template-columns: 1fr; justify-items: center; width: 100%; }
+            .menu-options-box label h2 { font-size: 1.25rem; }
+            .coffee-pic { width: 90vw; }
+            ul li .item-span { width: 65vw; }
         }
     </style>
 </head>

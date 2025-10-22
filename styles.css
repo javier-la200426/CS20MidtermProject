@@ -247,6 +247,8 @@ footer {
 }
 
 @media (max-width: 768px) {
+    header { position: static; }
+    main { margin-top: 0; }
     .nav-links {
         flex-wrap: wrap;
         gap: 1rem;
@@ -371,6 +373,8 @@ footer {
 }
 
 @media (max-width: 400px) {
+    header { position: static; }
+    main { margin-top: 0; }
     .hero {
         padding: 4rem 1rem;
         min-height: 400px;
