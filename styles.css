@@ -9,6 +9,8 @@ body {
     line-height: 1.6;
     color: #1a1a1a;
     background-color: white;
+    /* Reserve space for vertical scrollbar to avoid layout shift between pages */
+    overflow-y: scroll;
 }
 
 header {

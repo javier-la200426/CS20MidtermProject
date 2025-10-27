@@ -74,13 +74,13 @@
             column-count: 1;
         }
 
-        ul li {
+        .menu-section ul li {
             margin-left: 20px;
             break-inside: avoid;
             page-break-inside: avoid;
         }
 
-        ul li .item-span {
+        .menu-section ul li .item-span {
             display: inline-block;
             width: 300px;
         }
@@ -113,14 +113,14 @@
             .menu-options-box { gap: 12px; }
             .menu-options-box label h2 { font-size: 1.5rem; }
             .menu-section > ul { column-count: 1; }
-            ul li .item-span { width: 55vw; }
+            .menu-section ul li .item-span { width: 55vw; }
         }
 
         @media (max-width: 600px) {
             .menu-options-box { grid-template-columns: 1fr; justify-items: center; width: 100%; }
             .menu-options-box label h2 { font-size: 1.25rem; }
             .coffee-pic { width: 90vw; }
-            ul li .item-span { width: 65vw; }
+            .menu-section ul li .item-span { width: 65vw; }
         }
     </style>
 </head>
