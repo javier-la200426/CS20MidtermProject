@@ -1,22 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="rewards, loyalty program, kindlevan">
+    <meta name="keywords" content="rewards, loyalty program, kindlevan café, points, coffee membership">
     <title>Kindlevan Café - Rewards</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Internal stylesheet -->
+    <style>
+        .rewards-section {
+            text-align: center;
+            padding: 50px 120px 104px;
+            background-color: #f7f3ef;
+        }
+
+        .rewards-section h2 {
+            font-size: 42px;
+            color: #FF8C00;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .rewards-section p {
+            font-size: 18px;
+            color: #5a4646;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .tiers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .tier-card {
+            background-color: white;
+            border-radius: 18px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 350px;
+            height: 360px;
+            text-align: left;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .tier-card h3 {
+            color: #3c2f2f;
+            font-size: 28px;
+            border-bottom: 2px solid #d3bfa6;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tier-card ol {
+            margin-left: 20px;
+            color: #5a4646;
+            font-size: 20px;
+        }
+
+        .join-now {
+            display: inline-block;
+            background-color: #5a3825;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .join-now:hover {
+            background-color: #7a5034;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <nav>
-            <div class="logo"> 
+            <div class="logo">
                 <a href="index.html">Kindlevan Café</a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
-                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="rewards.html" class="active">Rewards</a></li>
                 <li><a href="orders.html">Online Orders</a></li>
                 <li><a href="nutrition.html">Nutrition</a></li>
                 <li><a href="hiring.html">Join Us</a></li>
@@ -27,11 +105,41 @@
     </header>
 
     <main>
-        <section class="page-header">
-            <h1>Rewards</h1>
-        </section>
-        <section class="content-section">
-            <p>Rewards content coming soon...</p>
+        <section class="rewards-section">
+            <h2>Join Kindlevan Rewards</h2>
+            <p>Earn points with every purchase and unlock exclusive perks, free drinks, and special birthday surprises.
+            </p>
+
+            <div class="tiers">
+                <div class="tier-card">
+                    <h3>☕ Bronze Tier</h3>
+                    <ol>
+                        <li>Earn 1 point per $1 spent</li>
+                        <li>Free pastry on your birthday</li>
+                        <li>Exclusive member-only discounts</li>
+                    </ol>
+                </div>
+
+                <div class="tier-card">
+                    <h3>🌟 Silver Tier</h3>
+                    <ol>
+                        <li>Earn 1.5 points per $1 spent</li>
+                        <li>One free drink every 50 points</li>
+                        <li>Early access to seasonal items</li>
+                    </ol>
+                </div>
+
+                <div class="tier-card">
+                    <h3>🏆 Gold Tier</h3>
+                    <ol>
+                        <li>Earn 2 points per $1 spent</li>
+                        <li>Monthly free drink of your choice</li>
+                        <li>Exclusive invites to member events</li>
+                    </ol>
+                </div>
+            </div>
+
+            <a href="orders.html" class="join-now">Join Now</a>
         </section>
     </main>
 
@@ -44,5 +152,5 @@
         </div>
     </footer>
 </body>
-</html>
 
+</html>
