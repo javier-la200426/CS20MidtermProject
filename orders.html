@@ -427,10 +427,13 @@
         // Start Order button
         document.getElementById("startOrderBtn").onclick = function () {
             const start = document.getElementById("startScreen");
+            const orderSection = document.querySelector(".order-section");
+            
             start.classList.add("fade-out");
 
             setTimeout(() => {
                 start.style.display = "none";
+                orderSection.style.display = "block"; // Show the order section
                 showCategory("coffeeCategory");
             }, 600); // match fade duration
         };
