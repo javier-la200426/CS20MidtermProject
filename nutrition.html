@@ -161,13 +161,15 @@
     </footer>
 
     <script>
+        // Read in nutrition.json then populate cards with info
         fetch("nutrition.json")
             .then(response => response.json())
             .then(data => { 
                 createCards(data)
             }) 
             .catch(error => console.error('Error:', error));
-       
+        
+        // Create cards that display nutritional info by subcategory
         function createCards(facts) {
             const mainDiv = document.querySelector("main");
 

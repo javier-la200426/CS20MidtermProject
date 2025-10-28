@@ -258,6 +258,7 @@
 
     <script>
         // Referenced this article for class creation: https://www.w3schools.com/js/js_classes.asp
+        // Defines menuItem class for adding items to menu manually
         class menuItem {
             constructor(name, small, large) {
                 this.name = name;
@@ -266,6 +267,7 @@
             }
         }
         // Referenced article for reading in json: https://www.geeksforgeeks.org/javascript/read-json-file-using-javascript/
+        // Read in JSON then parse
         let menu;
         fetch("menu.json")
             .then(response => response.json())
@@ -289,6 +291,7 @@
                 const radioLabels = document.querySelectorAll(".menu-options-box label");
                 const coffeePic = document.querySelector(".coffee-pic");
                 
+                // Make radio button labels clickable to select category (coffee, smoothies, or food)
                 radioLabels.forEach((button, index) => {
                     button.onclick = () => {
                     radioButtons[index].checked = true;
@@ -307,7 +310,7 @@
             }) 
             .catch(error => console.error('Error:', error));
 
-
+        // Fill menu with json information when category is selected
         function populateMenu(type, unorderedList) {
             // Clear current list
             unorderedList.innerHTML = "";
@@ -318,7 +321,8 @@
                 unorderedList.classList.remove('single-column');
             }
 
-             // Referenced docs for forEach syntax: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+            // Referenced docs for forEach syntax: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+            // Create list elements for menu
             Object.keys(menu[type]).forEach(category => {
                 // Create a block that contains the category title and its items
                 const categoryBlock = document.createElement("li");
