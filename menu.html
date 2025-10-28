@@ -17,8 +17,17 @@
             align-items: center;
         }
 
-        main h1 {
-            margin-top: 40px;
+        #menu-banner {
+            background-image: url("img/coffee.jpg");
+            background-size: cover;
+            background-position: 50% 50%;
+            width: 100%;
+            height: 25vh;
+            text-align: center;
+            vertical-align: middle;
+            box-sizing: border-box;
+            padding: 0;
+            margin-top: 0px;
         }
 
         .menu-options-box {
@@ -117,13 +126,26 @@
         }
 
         @media (max-width: 768px) {
-            main {
-                padding: 0 15px;
+            header {
+                position: fixed;
+                z-index: 1001;
             }
 
-            main h1 {
-                font-size: 2rem;
-                margin-top: 20px;
+            main {
+                padding: 0;
+                margin-top: 0 !important;
+            }
+
+            .page-header {
+                margin-top: 70px;
+            }
+
+            #menu-banner {
+                margin-top: 70px;
+            }
+
+            .menu-options-box, .menu-section {
+                padding: 0 15px;
             }
 
             .menu-options-box {
@@ -152,8 +174,12 @@
         }
 
         @media (max-width: 400px) {
-            main h1 {
-                font-size: 1.5rem;
+            .page-header {
+                margin-top: 60px;
+            }
+
+            #menu-banner {
+                margin-top: 60px;
             }
 
             .menu-options-box label h2 {
@@ -183,7 +209,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
                 <li><a href="orders.html">Online Orders</a></li>
                 <li><a href="nutrition.html">Nutrition</a></li>
@@ -195,7 +221,9 @@
     </header>
 
     <main>
-        <h1>Our Menu</h1>
+        <section class="page-header" id="menu-banner">
+            <h1 id="header">Our Menu</h1>
+        </section>
         
         <div class="coffee-pic"></div>
 

@@ -57,6 +57,10 @@ nav {
     color: #FF8C00;
 }
 
+.nav-links a.active {
+    color: #FF8C00;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;

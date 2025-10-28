@@ -9,6 +9,19 @@
 
     <!-- Inspired by PJ's Coffee site: https://www.pjscoffee.com/nutrition/ -->
     <style>
+        #nutrition-banner {
+            background-image: url("img/imgJav2Nutrition.webp");
+            background-size: cover;
+            background-position: 50% 50%;
+            width: 100%;
+            height: 25vh;
+            text-align: center;
+            vertical-align: middle;
+            box-sizing: border-box;
+            padding: 0;
+            margin-top: 0px;
+        }
+
         main {
             width: 100%;
             display: flex;
@@ -38,12 +51,26 @@
         }
 
         @media (max-width: 768px) {
-            main {
-                padding: 0 20px;
+            header {
+                position: fixed;
+                z-index: 1001;
             }
 
-            main h1 {
-                font-size: 2rem;
+            main {
+                padding: 0;
+                margin-top: 0 !important;
+            }
+
+            .page-header {
+                margin-top: 70px;
+            }
+
+            #nutrition-banner {
+                margin-top: 70px;
+            }
+
+            .content-section {
+                padding: 0 20px;
             }
 
             .subcategory-card {
@@ -65,12 +92,16 @@
         }
 
         @media (max-width: 400px) {
-            main {
-                padding: 0 15px;
+            .page-header {
+                margin-top: 60px;
             }
 
-            main h1 {
-                font-size: 1.5rem;
+            #nutrition-banner {
+                margin-top: 60px;
+            }
+
+            .content-section {
+                padding: 0 15px;
             }
 
             .subcategory-card {
@@ -101,7 +132,7 @@
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
                 <li><a href="orders.html">Online Orders</a></li>
-                <li><a href="nutrition.html">Nutrition</a></li>
+                <li><a href="nutrition.html" class="active">Nutrition</a></li>
                 <li><a href="hiring.html">Join Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="about.html">About</a></li>
@@ -110,11 +141,14 @@
     </header>
 
     <main>
-        <h1>Nutritional Facts</h1>
+        <section class="page-header" id="nutrition-banner">
+            <h1 id="header">Nutritional Facts</h1>
+        </section>
+        <section class="content-section">
         <p>Daily values are based on a 2,000 calorie diet. Individual requirements may vary</p>
         <!-- Nutritional facts collected from Kindlevan site (https://tufts.nutrislice.com/menu/kindlevan-cafe/daily) and compiled with ChatGPT -->
         <p>Please refer to the <a href="assets/nutrition_table.pdf" target="_blank">Nutritional Brochure</a> for complete nutritional information.</p>
-
+        </section>
     </main>
 
     <footer>

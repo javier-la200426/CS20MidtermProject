@@ -8,24 +8,21 @@
     <title>Kindlevan Café - Join Us</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .page-header {
-    text-align: center;
-    padding: 60px 20px 30px;
-}
-
-.page-header h1 {
-    font-size: 40px;
-    color: #5a3825;
-}
-
-.page-header p {
-    font-size: 18px;
-    color: #6b5142;
-}
+        #hiring-banner {
+            background-image: url("img/imgJav4Team.jpg");
+            background-size: cover;
+            background-position: 50% 50%;
+            width: 100%;
+            height: 25vh;
+            text-align: center;
+            vertical-align: middle;
+            box-sizing: border-box;
+            padding: 0;
+        }
 
 .careers-intro {
     max-width: 800px;
-    margin: 0 auto 50px;
+    margin: 60px auto 50px;
     padding: 0 20px;
     text-align: center;
     color: #3c2f2f;
@@ -114,16 +111,17 @@
 }
 
 @media (max-width: 768px) {
+    header {
+        position: fixed;
+        z-index: 1001;
+    }
+
+    main {
+        margin-top: 0 !important;
+    }
+
     .page-header {
-        padding: 40px 15px 20px;
-    }
-
-    .page-header h1 {
-        font-size: 28px;
-    }
-
-    .page-header p {
-        font-size: 16px;
+        margin-top: 70px;
     }
 
     .careers-intro {
@@ -164,12 +162,8 @@
 }
 
 @media (max-width: 400px) {
-    .page-header h1 {
-        font-size: 24px;
-    }
-
-    .page-header p {
-        font-size: 14px;
+    .page-header {
+        margin-top: 60px;
     }
 
     .roles-section {
@@ -221,7 +215,7 @@
                 <li><a href="rewards.html">Rewards</a></li>
                 <li><a href="orders.html">Online Orders</a></li>
                 <li><a href="nutrition.html">Nutrition</a></li>
-                <li><a href="hiring.html">Join Us</a></li>
+                <li><a href="hiring.html" class="active">Join Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
@@ -229,9 +223,8 @@
     </header>
 
     <main>
-        <section class="page-header">
-            <h1>Join Our Team</h1>
-            <p>At Kindlevan Café, we believe great coffee starts with great people.</p>
+        <section class="page-header" id="hiring-banner">
+            <h1 id="header">Join Our Team</h1>
         </section>
 
         <section class="careers-intro">
