@@ -3,9 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="contact, kindlevan, location">
+    <meta name="keywords" content="contact, kindlevan, location, email, phone">
     <title>Kindlevan Café - Contact Us</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        #contact {
+            display: flex;
+            width: 100%;
+        }
+
+        #call, #kindlevan-email {
+            width: 50%;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            color: #FF8C00;
+            margin-bottom: 3.5%;
+        }
+
+        #call a, #kindlevan-email a {
+            text-decoration: none;
+            color: #8B4513;
+            font-size: 1.3rem;
+        }
+
+        #call a:hover, #kindlevan-email a:hover {
+            font-size: 1.5rem;
+            color: #FF8C00;
+            transition-duration: 0.5s;
+        }
+
+        #msg {
+            margin-top: 3.5%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        form input, form select, form textarea {
+            margin-bottom: 5%;
+            margin-top: 1.5%;
+            width: 100%;
+            font-size: 1.05rem;
+        }
+
+        form label {
+            font-size: 1.15rem;
+            color: #8B4513;
+        }
+
+        input[type=text], textarea {
+            padding: 2% 3%;
+            font-family: Arial, sans-serif;
+        }
+
+        .submit {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #done {
+            margin-left: auto;
+            margin-right: auto;
+            width: 35%;
+            border: 0;
+            border-radius: 10px;
+            height: 7vh;
+            background: #1a1a1a;
+            color: #FF8C00;
+            font-size: 1.3rem;
+            cursor: pointer;
+            margin: 0;
+            transition-duration: 0.5s;
+        }
+
+        #done:hover {
+            color: #1a1a1a;
+            background: #FF8C00;
+        }
+
+        @media (max-width: 700px) {
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            #call a, #kindlevan-email a {
+                font-size: 1rem;
+            }
+
+            form label {
+                font-size: 1rem;
+            }
+
+            #msg {
+                width: 60%;
+            }
+
+            form input, form select, form textarea {
+                font-size: 0.95rem;
+            }
+
+            #done {
+                width: 50%;
+                height: 6vh;
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <script>
+        function validate() {
+            inputs = [...document.getElementsByTagName("input")]
+            email = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+
+            for (i = 0; i < inputs.length; i++) {
+                input = inputs[i]
+                if (input.value == "") {
+                    alert("Must enter a value for " + input.name.replace("_", " ") + " field.")
+                    input.focus()
+                    input.select()
+                    return false
+                } else if ((input.id == "fname" || input.id == "lname") && (input.value.length > 30)) {
+                    alert("Must enter a valid first or last name.")
+                    input.focus()
+                    input.select()
+                    return false
+                } else if (input.id == "phone" && (input.value.length > 15 || isNaN(input.value))) {
+                    alert("Must enter a valid phone number.")
+                    input.focus()
+                    input.select()
+                    return false
+                } else if (input.id == "email" && !email.test(input.value)) {
+                    alert("Must enter a valid email address.")
+                    input.focus()
+                    input.select()
+                    return false
+                }
+            }
+
+            input = document.getElementById("inquiry")
+            if (input.value == "") {
+                alert("Must choose a value for inquiry type field.")
+                return false
+            }
+
+            alert("Thank you for contacting us! We will shortly reach back.")
+            return true
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -27,11 +182,47 @@
     </header>
 
     <main>
-        <section class="page-header">
-            <h1>Contact Us</h1>
+        <section class="page-header" id="contact-banner">
+            <h1 id="header">Contact Us</h1>
         </section>
         <section class="content-section">
-            <p>Contact information coming soon...</p>
+            <div id="contact">
+                <div id="call">
+                    <h2>Call Us:</h2>
+                    <p><a href="tel: 617-627-3566">617-627-3566</a></p>
+                </div>
+                <div id="kindlevan-email">
+                    <h2>Send Us An Email:</h2>
+                    <p><a href="mailto: TuftsDining@tufts.edu">TuftsDining@tufts.edu</a></p>
+                </div>
+            </div>
+            <div id="msg">
+                <h2>Get in Touch</h2>
+                <form action="#" onsubmit="return validate()">
+                    <label for="fname">First Name:</label><br>
+                    <input type="text" id="fname" name="first_name" value="">
+                    <label for="lname">Last Name:</label><br>
+                    <input type="text" id="lname" name="last_name" value=""><br />
+                    <label for="email">Email:</label><br>
+                    <input type="text" id="email" name="email" value=""><br />
+                    <label for="phone">Phone:</label><br>
+                    <input type="text" id="phone" name="phone" value=""><br />
+                    <label for="inquiry">Subject Type:</label><br />
+                    <select id="inquiry" name="inquiry">
+                        <option value="" selected>Select One</option>
+                        <option value="Careers">Careers</option>
+                        <option value="Catering">Catering</option>
+                        <option value="Nutrition">Nutrition</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Option">Option</option>
+                    </select><br />
+                    <label for="message">Message:</label><br />
+                    <textarea id="message" name="message" rows="7"></textarea><br />
+                    <div class="submit">
+                        <input type="submit" id="done" name="done" value="Submit">
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
 

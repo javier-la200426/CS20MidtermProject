@@ -58,7 +58,7 @@ nav {
 }
 
 main {
-    margin-top: 60px;
+    margin-top: 70px;
 }
 
 .hero {
@@ -384,6 +384,129 @@ footer {
 .category-card p {
     color: #666;
     font-size: 1rem;
+}
+
+#contact-banner {
+    background-image: url("./images/contact-banner.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 25vh;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+#about-banner {
+    background-image: url("./images/about-banner.jpg");
+    background-size: cover;
+    background-position: 50% 60%;
+    width: 100%;
+    height: 25vh;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+#header {
+    align-content: center;
+    color: #FF8C00;
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+}
+
+.info h3 {
+    width: 60%;
+    text-align: center;
+    text-justify: center;
+    color: #FF8C00;
+    font-size: 1.45rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sustainability {
+    display: flex;
+    width: 100%;
+    gap: 2.5%;
+    background-color: #1a1a1a;
+    color: white;
+    margin-top: 3.5%;
+}
+
+.payment {
+    display: flex;
+    width: 100%;
+    gap: 10%;
+    margin-top: 3.5%;
+    padding: 0 10%;
+    color: #FF8C00;
+}
+
+.sustainability .img, .payment .img {
+    width: 50%;
+    text-align: center;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    justify-content: center;
+    align-content: center;
+}
+
+.payment img {
+    width: 90%;
+}
+
+img {
+    vertical-align: middle;
+    width: 75%;
+}
+
+.sustainability #facts {
+    width: 50%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    padding-right: 5%;
+}
+
+.payment #details {
+    width: 50%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    padding-left: 5%;
+}
+
+#facts h2 {
+    font-size: 2rem;
+    margin-bottom: 2.5%;
+}
+
+#details h2 {
+    font-size: 2rem;
+    margin-bottom: 5%;
+}
+
+#facts ul li{
+    font-size: 1.25rem;
+    padding-bottom: 2.5%;
+}
+
+#details ul li {
+    color: #8B4513;
+    font-size: 1.5rem;
+    padding-bottom: 2.5%;
+}
+
+#about {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: none;
+    padding: 0;
 }
 
 @media (max-width: 400px) {

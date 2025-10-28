@@ -3,9 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="about, team, kindlevan">
+    <meta name="keywords" content="about, team, kindlevan, sustainability">
     <title>Kindlevan Café - About</title>
     <link rel="stylesheet" href="styles.css">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        #myapp {
+            display: block;
+            width: auto;
+            margin: 2.5% 10%;
+        }
+
+        #myapp h2 {
+            width: 100%;
+            color: #FF8C00;
+            font-size: 2.5rem;
+            margin-bottom: 2.5%;
+            text-align: center;
+        }
+
+        #team {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        #team img {
+            width: 50%;
+            margin-bottom: 5%;
+        }
+
+        .member {
+            width: 50%;
+            justify-content: center;
+            text-align: center;
+            vertical-align: middle;
+            margin-bottom: 5%;
+        }
+
+        .member h3 {
+            color: #8B4513;
+            margin-bottom: 1%;
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+
+        @media (max-width: 700px) {
+            #myapp h2 {
+                font-size: 1.75rem;
+                margin-bottom: 2%;
+                margin-top: 5%;
+                text-align: center;
+            }
+
+            #team {
+                display: block;
+                width: 100%;
+            }
+
+            .member {
+                width: 100%;
+            }
+
+            #team img {
+                width: 60%;
+            }
+
+            .member h3 {
+                margin-bottom: 0.2%;
+                font-size: 1rem;
+                font-weight: normal;
+            }
+
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,11 +100,76 @@
     </header>
 
     <main>
-        <section class="page-header">
-            <h1>About</h1>
+        <section class="page-header" id="about-banner">
+            <h1 id="header">About Us</h1>
         </section>
-        <section class="content-section">
-            <p>Team member information coming soon...</p>
+        <section class="content-section" id="about">
+            <div class="info">
+                <h3>Located in the Tsungming Tsu Complex (TTC), Kindlevan Café is
+                   a Tufts Dining location serving coffee, smoothies, pastries, and hot 
+                   pressed sandwiches Monday through Friday.
+                </h3>
+            </div>
+            <div class="sustainability">
+                <div class="img">
+                    <img src="./images/sustainability.jpg" alt="Sustainable farm">
+                </div>
+                <div id="facts">
+                    <h2>Sustainability</h2>
+                    <ul>
+                        <li>Food Waste Composting - All waste is turned into compost</li>
+                        <li>Partnership with Foley Fish - Responsibly harvested seafood from George's Bank, the Gulf of Maine, and the Bay of Fundy</li>
+                        <li>Local Produce - Ingredients used are sourced from farms within 250 miles of Tufts University</li>
+                        <li>Plant-Based Products - Products avoid the use of processed foods</li>
+                        <li>Energy Efficiency - Use of solar power to operate equipment</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="payment">
+                <div id="details">
+                    <h2>Accepted Payment Forms</h2>
+                    <ul>
+                        <li>JumboCash</li>
+                        <li>Meal Swipes</li>
+                        <li>Cash</li>
+                        <li>Credit Card</li>
+                    </ul>
+                </div>
+                <div class="img">
+                    <img src="./images/smoothies.jpg" alt="Smoothies">
+                </div>
+            </div>
+            <div id="myapp"></div>
+            <script type="text/babel">
+                function TeamMember(name, position, img) {
+                    this.name = name
+                    this.position = position
+                    this.img = img
+                }
+
+                function Member(props) {
+                    return <>
+                          <div class="member">
+                           <img src={props.img} alt="Position"/>
+                           <h3>{props.name}</h3>
+                           <h3>{props.position}</h3>
+                           </div>
+                           </>
+                }
+
+                var team = [new TeamMember("Javier Laveaga", "Chef Manager", "./images/chef.jpg"),
+                            new TeamMember("Sergio Padilla", "Retail Manager", "./images/retail.jpg"),
+                            new TeamMember("Matt Zhang", "Unit Manager", "./images/unit.jpg"),
+                            new TeamMember("Gerald Rivera", "Catering Operations Manager", "./images/catering.jpg")]
+
+                var page = <>
+                        <h2>Meet the Team</h2><br/>
+                        <div id="team">
+                        {team.map((team, i) => <Member key={i} name={team.name} img={team.img} position={team.position}/>)}
+                        </div>
+                    </>
+                ReactDOM.render(page, myapp)
+            </script>
         </section>
     </main>
 
