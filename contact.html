@@ -93,21 +93,43 @@
             background: #FF8C00;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 768px) {
+            header {
+                position: fixed;
+                z-index: 1001;
+            }
+
+            main {
+                margin-top: 0 !important;
+            }
+
+            .page-header {
+                margin-top: 70px;
+            }
+
+            #contact {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            #call, #kindlevan-email {
+                width: 100%;
+            }
+
             h2 {
-                font-size: 1.25rem;
+                font-size: 1.4rem;
             }
 
             #call a, #kindlevan-email a {
-                font-size: 1rem;
+                font-size: 1.1rem;
+            }
+
+            #msg {
+                width: 80%;
             }
 
             form label {
                 font-size: 1rem;
-            }
-
-            #msg {
-                width: 60%;
             }
 
             form input, form select, form textarea {
@@ -115,9 +137,41 @@
             }
 
             #done {
-                width: 50%;
+                width: 60%;
                 height: 6vh;
                 font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .page-header {
+                margin-top: 60px;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            #call a, #kindlevan-email a {
+                font-size: 1rem;
+            }
+
+            #msg {
+                width: 90%;
+            }
+
+            form label {
+                font-size: 0.9rem;
+            }
+
+            form input, form select, form textarea {
+                font-size: 0.9rem;
+            }
+
+            #done {
+                width: 70%;
+                height: 5vh;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -168,6 +222,11 @@
             <div class="logo"> 
                 <a href="index.html">Kindlevan Café</a>
             </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
@@ -175,7 +234,7 @@
                 <li><a href="orders.html">Online Orders</a></li>
                 <li><a href="nutrition.html">Nutrition</a></li>
                 <li><a href="hiring.html">Join Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
         </nav>
@@ -234,6 +293,16 @@
             <p>&copy; 2024 Kindlevan Café. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
 
