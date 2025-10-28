@@ -116,11 +116,57 @@
             .menu-section ul li .item-span { width: 55vw; }
         }
 
-        @media (max-width: 600px) {
-            .menu-options-box { grid-template-columns: 1fr; justify-items: center; width: 100%; }
-            .menu-options-box label h2 { font-size: 1.25rem; }
-            .coffee-pic { width: 90vw; }
-            .menu-section ul li .item-span { width: 65vw; }
+        @media (max-width: 768px) {
+            main {
+                padding: 0 15px;
+            }
+
+            main h1 {
+                font-size: 2rem;
+                margin-top: 20px;
+            }
+
+            .menu-options-box {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                width: 100%;
+                gap: 15px;
+            }
+
+            .menu-options-box label h2 {
+                font-size: 1.3rem;
+            }
+
+            .coffee-pic {
+                width: 95vw;
+                margin: 20px 0;
+            }
+
+            .menu-section > ul {
+                column-count: 1;
+            }
+
+            .menu-section ul li .item-span {
+                width: 70vw;
+            }
+        }
+
+        @media (max-width: 400px) {
+            main h1 {
+                font-size: 1.5rem;
+            }
+
+            .menu-options-box label h2 {
+                font-size: 1.1rem;
+            }
+
+            .coffee-pic {
+                width: 90vw;
+            }
+
+            .menu-section ul li .item-span {
+                width: 65vw;
+            }
         }
     </style>
 </head>
@@ -129,6 +175,11 @@
         <nav>
             <div class="logo"> 
                 <a href="index.html">Kindlevan Café</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -306,6 +357,16 @@
         
         
 
+    </script>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
     </script>
 </body>
 </html>

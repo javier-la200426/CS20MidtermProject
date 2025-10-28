@@ -277,6 +277,136 @@
             margin-top: 0 !important;
             padding-top: 3rem;
         }
+
+        @media (max-width: 768px) {
+            header {
+                position: fixed;
+                z-index: 1001;
+            }
+
+            main {
+                margin-top: 0 !important;
+            }
+
+            #startScreen {
+                margin-top: 0;
+                height: 100vh;
+                padding-top: 0;
+            }
+
+            #startScreen h1 {
+                font-size: 2.5rem;
+                padding-top: 120px;
+            }
+
+            #startScreen p {
+                font-size: 1.2rem;
+            }
+
+            #startOrderBtn {
+                padding: 15px 35px;
+                font-size: 18px;
+            }
+
+            .order-section {
+                padding: 40px 20px;
+                padding-top: 60px;
+            }
+
+            .order-section h2 {
+                font-size: 24px;
+                padding-bottom: 30px;
+            }
+
+            .item-grid {
+                gap: 20px;
+            }
+
+            .item-card {
+                width: 100%;
+                max-width: 300px;
+                padding: 20px;
+            }
+
+            .item-card img {
+                height: 200px;
+            }
+
+            .item-card h4 {
+                font-size: 20px;
+            }
+
+            .item-card p {
+                font-size: 18px;
+            }
+
+            form {
+                padding: 25px 30px;
+                font-size: 16px;
+            }
+
+            label {
+                width: 120px;
+                font-size: 14px;
+            }
+
+            input[type="text"], select {
+                width: 180px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            #startScreen h1 {
+                font-size: 2rem;
+                padding-top: 100px;
+            }
+
+            #startScreen p {
+                font-size: 1rem;
+            }
+
+            #startOrderBtn {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+
+            .order-section {
+                padding: 30px 15px;
+                padding-top: 40px;
+            }
+
+            .order-section h2 {
+                font-size: 20px;
+            }
+
+            .item-card {
+                padding: 15px;
+            }
+
+            .item-card h4 {
+                font-size: 18px;
+            }
+
+            .item-card p {
+                font-size: 16px;
+            }
+
+            form {
+                padding: 20px;
+                font-size: 14px;
+            }
+
+            label {
+                width: 100px;
+                font-size: 13px;
+            }
+
+            input[type="text"], select {
+                width: 160px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 
@@ -285,6 +415,11 @@
         <nav>
             <div class="logo"> 
                 <a href="index.html">Kindlevan Café</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -334,7 +469,7 @@
             </div>
 
             <!-- Step 4: Customer info -->
-            <div id="infoForm" class="category">can you now make it so that there is enough space between the
+            <div id="infoForm" class="category">
                 <h2>👤 Your Information</h2>
 
                 <form id="orderForm">
@@ -495,6 +630,16 @@
             }
         };
 
+    </script>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
     </script>
 </body>
 

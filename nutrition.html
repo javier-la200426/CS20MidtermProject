@@ -37,6 +37,51 @@
             width: 200px;
         }
 
+        @media (max-width: 768px) {
+            main {
+                padding: 0 20px;
+            }
+
+            main h1 {
+                font-size: 2rem;
+            }
+
+            .subcategory-card {
+                padding: 15px 20px;
+                margin-top: 30px;
+            }
+
+            .item-row {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 0;
+            }
+
+            .item-name {
+                width: 100%;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            main {
+                padding: 0 15px;
+            }
+
+            main h1 {
+                font-size: 1.5rem;
+            }
+
+            .subcategory-card {
+                padding: 10px 15px;
+                margin-top: 20px;
+            }
+
+            .subcategory-card h2 {
+                font-size: 1.2rem;
+            }
+        }
 
     </style>
 </head>
@@ -45,6 +90,11 @@
         <nav>
             <div class="logo"> 
                 <a href="index.html">Kindlevan Café</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -124,6 +174,16 @@
             
         }
 
+    </script>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
     </script>
 </body>
 </html>

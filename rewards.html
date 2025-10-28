@@ -87,6 +87,62 @@
         footer {
             margin-top: 0;
         }
+
+        @media (max-width: 768px) {
+            .rewards-section {
+                padding: 30px 20px 60px;
+            }
+
+            .rewards-section h2 {
+                font-size: 28px;
+            }
+
+            .rewards-section p {
+                font-size: 16px;
+            }
+
+            .tiers {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tier-card {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+                padding: 20px;
+            }
+
+            .tier-card h3 {
+                font-size: 24px;
+            }
+
+            .tier-card ol {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .rewards-section {
+                padding: 20px 15px 40px;
+            }
+
+            .rewards-section h2 {
+                font-size: 24px;
+            }
+
+            .tier-card {
+                padding: 15px;
+            }
+
+            .tier-card h3 {
+                font-size: 20px;
+            }
+
+            .tier-card ol {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 
@@ -95,6 +151,11 @@
         <nav>
             <div class="logo"> 
                 <a href="index.html">Kindlevan Café</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -156,6 +217,16 @@
             <p>&copy; 2024 Kindlevan Café. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>
