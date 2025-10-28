@@ -9,6 +9,8 @@ body {
     line-height: 1.6;
     color: #1a1a1a;
     background-color: white;
+    /* Reserve space for vertical scrollbar to avoid layout shift between pages */
+    overflow-y: scroll;
 }
 
 header {
@@ -19,7 +21,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 nav {
@@ -60,7 +62,7 @@ main {
 }
 
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/KindleVan.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/KindleVan.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -136,7 +138,7 @@ main {
     margin-left: auto;
     margin-right: auto;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .info-column {
@@ -150,7 +152,7 @@ main {
 
 .info-column:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .info-column h2 {
@@ -159,7 +161,7 @@ main {
     font-size: 2rem;
     text-align: center;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hours-list {
@@ -176,7 +178,7 @@ main {
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 8px;
     border-left: 4px solid #FF8C00;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .hours-item.closed {
@@ -247,31 +249,37 @@ footer {
 }
 
 @media (max-width: 768px) {
-    header { position: static; }
-    main { margin-top: 0; }
+    header {
+        position: static;
+    }
+
+    main {
+        margin-top: 0;
+    }
+
     .nav-links {
         flex-wrap: wrap;
         gap: 1rem;
         justify-content: center;
     }
-    
+
     nav {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .hero-content h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero-content p {
         font-size: 1.2rem;
     }
-    
+
     .features {
         grid-template-columns: 1fr;
     }
-    
+
     .hours-location {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -279,24 +287,30 @@ footer {
         margin-left: 1rem;
         margin-right: 1rem;
     }
-    
+
     .info-column {
         padding: 2rem 1.5rem;
     }
-    
+
     .hours-item {
         padding: 0.75rem 1rem;
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
     }
-    
-    .hours-item .day, .hours-item .time {
+
+    .hours-item .day,
+    .hours-item .time {
         font-size: 1rem;
     }
-    
+
     .menu-categories {
         grid-template-columns: 1fr;
+    }
+
+    #startScreen {
+        background-attachment: scroll;
+        min-height: calc(100vh - 140px);
     }
 }
 
@@ -358,7 +372,7 @@ footer {
 
 .category-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .category-card h2 {
@@ -496,64 +510,71 @@ img {
 }
 
 @media (max-width: 400px) {
-    header { position: static; }
-    main { margin-top: 0; }
+    header {
+        position: static;
+    }
+
+    main {
+        margin-top: 0;
+    }
+
     .hero {
         padding: 4rem 1rem;
         min-height: 400px;
     }
-    
+
     .hero-content h1 {
         font-size: 2rem;
     }
-    
+
     .hero-content p {
         font-size: 1rem;
     }
-    
+
     .cta-button {
         padding: 0.75rem 1.5rem;
     }
-    
+
     .features {
         padding: 0 1rem;
     }
-    
+
     .feature-card {
         padding: 1.5rem;
     }
-    
+
     .hours-location {
         padding: 2rem 0.5rem;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
         border-radius: 8px;
     }
-    
+
     .info-column {
         padding: 1.5rem 1rem;
     }
-    
+
     .info-column h2 {
         font-size: 1.5rem;
     }
-    
+
     .hours-item {
         padding: 0.6rem 0.8rem;
     }
-    
-    .hours-item .day, .hours-item .time {
+
+    .hours-item .day,
+    .hours-item .time {
         font-size: 0.9rem;
     }
-    
+
     .page-header {
         padding: 2rem 1rem;
     }
-    
+
     .page-header h1 {
         font-size: 1.8rem;
     }
-    
+
     .content-section {
         padding: 0 1rem;
     }
