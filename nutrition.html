@@ -166,7 +166,7 @@
     </footer>
 
     <script>
-        // Load nutrition data from JSON file
+        // Read in nutrition.json then populate nutritional info
         fetch("nutrition.json")
             .then(response => response.json())
             .then(data => { 
@@ -174,10 +174,11 @@
             }) 
             .catch(error => console.error('Error:', error));
        
-        // Build nutrition cards from JSON data
+        // Create cards that display nutritional facts by category
         function createCards(facts) {
             const mainDiv = document.querySelector("main");
 
+            // Make card for each subcategory (coffee, tea, sandwiches, etc)
             Object.keys(facts).forEach(category => {
 
                 Object.keys(facts[category]).forEach(subcategory => {
@@ -188,7 +189,7 @@
                     subcategoryCard.classList.add("subcategory-card");
                     mainDiv.appendChild(subcategoryCard);
 
-                    // Create row for each menu item
+                    // Make rows within each card
                     Object.keys(facts[category][subcategory]).forEach(item => {
                         const itemRow = document.createElement("div")
                         itemRow.classList.add("item-row");
@@ -197,7 +198,7 @@
                         itemName.innerHTML = item;
                         itemRow.appendChild(itemName);
 
-                        // Format nutrition info nicely
+                        // Populate rows with nutritional facts
                         info = Object.values(facts[category][subcategory][item]);
                         itemFacts = document.createElement("p");    
                         itemFacts.innerHTML = `
