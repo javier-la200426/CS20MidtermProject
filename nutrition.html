@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Nutrition facts page -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="nutrition, healthy, coffee menu, cafe menu, drinks, food, kindlevan">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Inspired by PJ's Coffee site: https://www.pjscoffee.com/nutrition/ -->
+    <!-- Nutrition page styling -->
     <style>
         #nutrition-banner {
             background-image: url("img/imgJav2Nutrition.jpg");
@@ -34,6 +36,7 @@
             text-decoration: none;
         }
 
+        /* Cards for each food category */
         .subcategory-card {
             margin-top: 50px;
             background-color: white;
@@ -215,7 +218,7 @@
             
         }
 
-        // Add disclaimer text at the bottom after all nutrition cards are loaded
+        // Add legal disclaimer at bottom
         setTimeout(() => {
             const mainDiv = document.querySelector("main");
             const disclaimerSection = document.createElement("section");
@@ -231,6 +234,7 @@
     </script>
 
     <script>
+        // Mobile menu (copy-pasted from other pages)
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
