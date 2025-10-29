@@ -39,15 +39,20 @@
             background-color: white;
             border-radius: 1rem;
             padding: 20px 50px;
+            width: 90%;
+            max-width: 800px;
         }
 
         .item-row {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid black;
         }
 
         .item-name {
-            width: 200px;
+            flex: 1;
+            min-width: 200px;
         }
 
         @media (max-width: 768px) {
@@ -76,6 +81,7 @@
             .subcategory-card {
                 padding: 15px 20px;
                 margin-top: 30px;
+                width: 95%;
             }
 
             .item-row {
@@ -107,6 +113,7 @@
             .subcategory-card {
                 padding: 10px 15px;
                 margin-top: 20px;
+                width: 95%;
             }
 
             .subcategory-card h2 {
