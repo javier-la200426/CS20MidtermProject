@@ -234,15 +234,20 @@
                 </div>
             </div>
             <script>
-                // Team member data
-                const teamMembers = [
-                    { name: "Javier Laveaga", position: "Chef Manager", img: "./images/chef.jpg" },
-                    { name: "Sergio Padilla", position: "Retail Manager", img: "./images/retail.jpg" },
-                    { name: "Matt Zhang", position: "Unit Manager", img: "./images/unit.jpg" },
-                    { name: "Gerald Rivera", position: "Catering Operations Manager", img: "./images/catering.jpg" }
-                ];
+                // Definition of a TeamMember class that has a name, the position of the member, and an image
+                function TeamMember(name, position, img) {
+                    this.name = name
+                    this.position = position
+                    this.img = img
+                }
 
-                // Function to create team member HTML
+                // Creates an array of TeamMember objects
+                const teamMembers = [ new TeamMember("Javier Laveaga", "Chef Manager", "./images/chef.jpg"),
+                                      new TeamMember("Sergio Padilla", "Retail Manager", "./images/retail.jpg"),
+                                      new TeamMember("Matt Zhang", "Unit Manager", "./images/unit.jpg"),
+                                      new TeamMember("Gerald Rivera", "Catering Operations Manager", "./images/catering.jpg")];
+
+                // Creates the HTML for each team member
                 function createTeamMemberHTML(member) {
                     return `
                         <div class="member">
@@ -253,7 +258,7 @@
                     `;
                 }
 
-                // Function to render team members
+                // Function to parse through the team members array and display it on the site
                 function renderTeamMembers() {
                     const teamContainer = document.getElementById('team');
                     if (teamContainer) {
@@ -261,7 +266,7 @@
                     }
                 }
 
-                // Render team members when the page loads
+                // Displays team members on the site
                 document.addEventListener('DOMContentLoaded', renderTeamMembers);
             </script>
         </section>
