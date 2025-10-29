@@ -178,30 +178,35 @@
         }
     </style>
     <script>
-        // Form validation - makes sure people fill everything out properly
+        // Validate the form's inputs, making sure the form is complete before submission
         function validate() {
+            // Obtains all the text inputs
             inputs = [...document.getElementsByTagName("input")]
             email = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 
-            // Check each input field
+            // Checks that text inputs are valid, else throws an alert
             for (i = 0; i < inputs.length; i++) {
                 input = inputs[i]
+                // Checks that text inputs are not empty
                 if (input.value == "") {
                     alert("Must enter a value for " + input.name.replace("_", " ") + " field.")
                     input.focus()
                     input.select()
                     return false
                 } else if ((input.id == "fname" || input.id == "lname") && (input.value.length > 30)) {
+                    // Checks that the first and last name are valid by looking at the characters inputted
                     alert("Must enter a valid first or last name.")
                     input.focus()
                     input.select()
                     return false
                 } else if (input.id == "phone" && (input.value.length > 15 || isNaN(input.value))) {
+                    // Checks that a valid phone number was inputted by ensuring that only numbers are inputted
                     alert("Must enter a valid phone number.")
                     input.focus()
                     input.select()
                     return false
                 } else if (input.id == "email" && !email.test(input.value)) {
+                    // Checks that a valid email address is inputted with an @ and a valid tld domain.
                     alert("Must enter a valid email address.")
                     input.focus()
                     input.select()
@@ -209,13 +214,14 @@
                 }
             }
 
+            // Checks that a value from the selector field was selected and is not "Select One"
             input = document.getElementById("inquiry")
             if (input.value == "") {
                 alert("Must choose a value for inquiry type field.")
                 return false
             }
 
-            // All good! Show success message
+            // Displays a thank you message if form was submitted successfully
             alert("Thank you for contacting us! We will shortly reach back.")
             return true
         }
