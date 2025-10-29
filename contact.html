@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Contact page setup -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="contact, kindlevan, location, email, phone">
     <title>Kindlevan Café - Contact Us</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Contact form styling -->
     <style>
         #contact {
             display: flex;
@@ -176,10 +178,12 @@
         }
     </style>
     <script>
+        // Form validation - makes sure people fill everything out properly
         function validate() {
             inputs = [...document.getElementsByTagName("input")]
             email = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 
+            // Check each input field
             for (i = 0; i < inputs.length; i++) {
                 input = inputs[i]
                 if (input.value == "") {
@@ -211,6 +215,7 @@
                 return false
             }
 
+            // All good! Show success message
             alert("Thank you for contacting us! We will shortly reach back.")
             return true
         }
@@ -245,6 +250,7 @@
             <h1 id="header">Contact Us</h1>
         </section>
         <section class="content-section">
+            <!-- Quick contact options -->
             <div id="contact">
                 <div id="call">
                     <h2>Call Us:</h2>
@@ -255,6 +261,7 @@
                     <p><a href="mailto: TuftsDining@tufts.edu">TuftsDining@tufts.edu</a></p>
                 </div>
             </div>
+            <!-- Contact form for detailed messages -->
             <div id="msg">
                 <h2>Get in Touch</h2>
                 <form action="#" onsubmit="return validate()">
@@ -266,6 +273,7 @@
                     <input type="text" id="email" name="email" value=""><br />
                     <label for="phone">Phone:</label><br>
                     <input type="text" id="phone" name="phone" value=""><br />
+                    <!-- Dropdown for different inquiry types -->
                     <label for="inquiry">Subject Type:</label><br />
                     <select id="inquiry" name="inquiry">
                         <option value="" selected>Select One</option>

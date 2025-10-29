@@ -2,13 +2,14 @@
 <html lang="en">
 
 <head>
+    <!-- Rewards program page -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="rewards, loyalty program, kindlevan café, points, coffee membership">
     <title>Kindlevan Café - Rewards</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Internal stylesheet -->
+    <!-- Rewards page styling -->
     <style>
         #rewards-banner {
             background-image: url("img/imgJav1.webp");
@@ -50,6 +51,7 @@
             margin-top: 30px;
         }
 
+        /* Individual reward tier cards */
         .tier-card {
             background-color: white;
             border-radius: 18px;
@@ -60,6 +62,7 @@
             text-align: left;
         }
 
+        /* Nice hover effect */
         .tier-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
@@ -95,7 +98,7 @@
             background-color: #7a5034;
         }
 
-        /* Remove footer margin to eliminate white gap */
+        /* Fix footer spacing */
         footer {
             margin-top: 0;
         }
@@ -208,6 +211,7 @@
             <p>Earn points with every purchase and unlock exclusive perks, free drinks, and special birthday surprises.
             </p>
 
+            <!-- Three reward tiers -->
             <div class="tiers">
                 <div class="tier-card">
                     <h3>☕ Bronze Tier</h3>
@@ -218,6 +222,7 @@
                     </ol>
                 </div>
 
+                <!-- Middle tier with better perks -->
                 <div class="tier-card">
                     <h3>🌟 Silver Tier</h3>
                     <ol>
@@ -227,6 +232,7 @@
                     </ol>
                 </div>
 
+                <!-- VIP tier for our best customers -->
                 <div class="tier-card">
                     <h3>🏆 Gold Tier</h3>
                     <ol>
@@ -251,6 +257,7 @@
     </footer>
 
     <script>
+        // Mobile menu toggle (standard across all pages)
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 

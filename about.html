@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Standard HTML setup -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="about, team, kindlevan, sustainability">
     <title>Kindlevan Café - About</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Custom styles just for this page -->
     <style>
         #myapp {
             display: block;
@@ -192,12 +194,14 @@
             <h1 id="header">About Us</h1>
         </section>
         <section class="content-section" id="about">
+            <!-- Quick intro about who we are -->
             <div class="info">
                 <h3>Located in the Tsungming Tsu Complex (TTC), Kindlevan Café is
                    a Tufts Dining location serving coffee, smoothies, pastries, and hot 
                    pressed sandwiches Monday through Friday.
                 </h3>
             </div>
+            <!-- We care about the planet -->
             <div class="sustainability">
                 <div class="img">
                     <img src="./images/sustainability.jpg" alt="Sustainable farm">
@@ -213,6 +217,7 @@
                     </ul>
                 </div>
             </div>
+            <!-- How you can pay us -->
             <div class="payment">
                 <div id="details">
                     <h2>Accepted Payment Forms</h2>
@@ -227,6 +232,7 @@
                     <img src="./images/smoothies.jpg" alt="Smoothies">
                 </div>
             </div>
+            <!-- The awesome people who work here -->
             <div id="myapp">
                 <h2>Meet the Team</h2><br/>
                 <div id="team">
@@ -234,7 +240,7 @@
                 </div>
             </div>
             <script>
-                // Team member data
+                // All our team info in one place
                 const teamMembers = [
                     { name: "Javier Laveaga", position: "Chef Manager", img: "./images/chef.jpg" },
                     { name: "Sergio Padilla", position: "Retail Manager", img: "./images/retail.jpg" },
@@ -242,7 +248,7 @@
                     { name: "Gerald Rivera", position: "Catering Operations Manager", img: "./images/catering.jpg" }
                 ];
 
-                // Function to create team member HTML
+                // Builds the HTML for each team member
                 function createTeamMemberHTML(member) {
                     return `
                         <div class="member">
@@ -253,7 +259,7 @@
                     `;
                 }
 
-                // Function to render team members
+                // Actually puts the team on the page
                 function renderTeamMembers() {
                     const teamContainer = document.getElementById('team');
                     if (teamContainer) {
@@ -261,7 +267,7 @@
                     }
                 }
 
-                // Render team members when the page loads
+                // Wait for page to load, then show the team
                 document.addEventListener('DOMContentLoaded', renderTeamMembers);
             </script>
         </section>
