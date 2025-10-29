@@ -144,11 +144,6 @@
         <section class="page-header" id="nutrition-banner">
             <h1 id="header">Nutritional Facts</h1>
         </section>
-        <section class="content-section">
-        <p>Daily values are based on a 2,000 calorie diet. Individual requirements may vary</p>
-        <!-- Nutritional facts collected from Kindlevan site (https://tufts.nutrislice.com/menu/kindlevan-cafe/daily) and compiled with ChatGPT -->
-        <p>Please refer to the <a href="assets/nutrition_table.pdf" target="_blank">Nutritional Brochure</a> for complete nutritional information.</p>
-        </section>
     </main>
 
     <footer>
@@ -207,6 +202,19 @@
             })
             
         }
+
+        // Add disclaimer text at the bottom after all nutrition cards are loaded
+        setTimeout(() => {
+            const mainDiv = document.querySelector("main");
+            const disclaimerSection = document.createElement("section");
+            disclaimerSection.classList.add("content-section");
+            disclaimerSection.innerHTML = `
+                <p>Daily values are based on a 2,000 calorie diet. Individual requirements may vary</p>
+                <!-- Nutritional facts collected from Kindlevan site (https://tufts.nutrislice.com/menu/kindlevan-cafe/daily) and compiled with ChatGPT -->
+                <p>Please refer to the <a href="assets/nutrition_table.pdf" target="_blank">Nutritional Brochure</a> for complete nutritional information.</p>
+            `;
+            mainDiv.appendChild(disclaimerSection);
+        }, 100);
 
     </script>
 
