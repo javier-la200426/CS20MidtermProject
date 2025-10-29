@@ -6,9 +6,6 @@
     <meta name="keywords" content="about, team, kindlevan, sustainability">
     <title>Kindlevan Café - About</title>
     <link rel="stylesheet" href="styles.css">
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
         #myapp {
             display: block;
@@ -230,36 +227,42 @@
                     <img src="./images/smoothies.jpg" alt="Smoothies">
                 </div>
             </div>
-            <div id="myapp"></div>
-            <script type="text/babel">
-                function TeamMember(name, position, img) {
-                    this.name = name
-                    this.position = position
-                    this.img = img
-                }
+            <div id="myapp">
+                <h2>Meet the Team</h2><br/>
+                <div id="team">
+                    <!-- Team members will be dynamically inserted here -->
+                </div>
+            </div>
+            <script>
+                // Team member data
+                const teamMembers = [
+                    { name: "Javier Laveaga", position: "Chef Manager", img: "./images/chef.jpg" },
+                    { name: "Sergio Padilla", position: "Retail Manager", img: "./images/retail.jpg" },
+                    { name: "Matt Zhang", position: "Unit Manager", img: "./images/unit.jpg" },
+                    { name: "Gerald Rivera", position: "Catering Operations Manager", img: "./images/catering.jpg" }
+                ];
 
-                function Member(props) {
-                    return <>
-                          <div class="member">
-                           <img src={props.img} alt="Position"/>
-                           <h3>{props.name}</h3>
-                           <h3>{props.position}</h3>
-                           </div>
-                           </>
-                }
-
-                var team = [new TeamMember("Javier Laveaga", "Chef Manager", "./images/chef.jpg"),
-                            new TeamMember("Sergio Padilla", "Retail Manager", "./images/retail.jpg"),
-                            new TeamMember("Matt Zhang", "Unit Manager", "./images/unit.jpg"),
-                            new TeamMember("Gerald Rivera", "Catering Operations Manager", "./images/catering.jpg")]
-
-                var page = <>
-                        <h2>Meet the Team</h2><br/>
-                        <div id="team">
-                        {team.map((team, i) => <Member key={i} name={team.name} img={team.img} position={team.position}/>)}
+                // Function to create team member HTML
+                function createTeamMemberHTML(member) {
+                    return `
+                        <div class="member">
+                            <img src="${member.img}" alt="Position"/>
+                            <h3>${member.name}</h3>
+                            <h3>${member.position}</h3>
                         </div>
-                    </>
-                ReactDOM.render(page, myapp)
+                    `;
+                }
+
+                // Function to render team members
+                function renderTeamMembers() {
+                    const teamContainer = document.getElementById('team');
+                    if (teamContainer) {
+                        teamContainer.innerHTML = teamMembers.map(createTeamMemberHTML).join('');
+                    }
+                }
+
+                // Render team members when the page loads
+                document.addEventListener('DOMContentLoaded', renderTeamMembers);
             </script>
         </section>
     </main>
