@@ -10,7 +10,7 @@
     <!-- Inspired by PJ's Coffee site: https://www.pjscoffee.com/nutrition/ -->
     <style>
         #nutrition-banner {
-            background-image: url("img/imgJav2Nutrition.webp");
+            background-image: url("img/imgJav2Nutrition.jpg");
             background-size: cover;
             background-position: 50% 50%;
             width: 100%;
@@ -39,15 +39,20 @@
             background-color: white;
             border-radius: 1rem;
             padding: 20px 50px;
+            width: 90%;
+            max-width: 800px;
         }
 
         .item-row {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid black;
         }
 
         .item-name {
-            width: 200px;
+            flex: 1;
+            min-width: 200px;
         }
 
         @media (max-width: 768px) {
@@ -76,6 +81,7 @@
             .subcategory-card {
                 padding: 15px 20px;
                 margin-top: 30px;
+                width: 95%;
             }
 
             .item-row {
@@ -107,6 +113,7 @@
             .subcategory-card {
                 padding: 10px 15px;
                 margin-top: 20px;
+                width: 95%;
             }
 
             .subcategory-card h2 {
@@ -143,11 +150,6 @@
     <main>
         <section class="page-header" id="nutrition-banner">
             <h1 id="header">Nutritional Facts</h1>
-        </section>
-        <section class="content-section">
-        <p>Daily values are based on a 2,000 calorie diet. Individual requirements may vary</p>
-        <!-- Nutritional facts collected from Kindlevan site (https://tufts.nutrislice.com/menu/kindlevan-cafe/daily) and compiled with ChatGPT -->
-        <p>Please refer to the <a href="assets/nutrition_table.pdf" target="_blank">Nutritional Brochure</a> for complete nutritional information.</p>
         </section>
     </main>
 
@@ -207,6 +209,19 @@
             })
             
         }
+
+        // Add disclaimer text at the bottom after all nutrition cards are loaded
+        setTimeout(() => {
+            const mainDiv = document.querySelector("main");
+            const disclaimerSection = document.createElement("section");
+            disclaimerSection.classList.add("content-section");
+            disclaimerSection.innerHTML = `
+                <p>Daily values are based on a 2,000 calorie diet. Individual requirements may vary</p>
+                <!-- Nutritional facts collected from Kindlevan site (https://tufts.nutrislice.com/menu/kindlevan-cafe/daily) and compiled with ChatGPT -->
+                <p>Please refer to the <a href="assets/nutrition_table.pdf" target="_blank">Nutritional Brochure</a> for complete nutritional information.</p>
+            `;
+            mainDiv.appendChild(disclaimerSection);
+        }, 100);
 
     </script>
 
