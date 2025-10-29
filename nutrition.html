@@ -164,7 +164,7 @@
 
     <script>
         // Read in nutrition.json then populate nutritional info
-        // nutrition.json content created by downloading nutritional data from Kindlevan site and compiling with ChatGPT
+        // nutrition.json content created by downloading nutritional data from Kindlevan site
         fetch("nutrition.json")
             .then(response => response.json())
             .then(data => { 
@@ -223,7 +223,7 @@
             disclaimerSection.classList.add("content-section");
             disclaimerSection.innerHTML = `
                 <p>Daily values are based on a 2,000 calorie diet. Individual requirements may vary</p>
-                <!-- Nutritional facts collected from Kindlevan site (https://tufts.nutrislice.com/menu/kindlevan-cafe/daily) and compiled with ChatGPT -->
+                <!-- Nutritional facts collected from Kindlevan site (https://tufts.nutrislice.com/menu/kindlevan-cafe/daily) -->
                 <p>Please refer to the <a href="assets/nutrition_table.pdf" target="_blank">Nutritional Brochure</a> for complete nutritional information.</p>
             `;
             mainDiv.appendChild(disclaimerSection);
