@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
+    <!-- Online ordering page -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="online order, coffee, smoothies, food, kindlevan">
     <title>Kindlevan Café - Online Orders</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Lots of custom styling for the ordering flow -->
     <style>
         /* General Typography & Layout */
         body {
@@ -56,7 +58,7 @@
             padding: 0 10px 5px 10px;
         }
 
-        /* Transition Animations */
+        /* Smooth transitions between order steps */
         .category {
             color: #8B4513;
             display: none;
@@ -85,7 +87,7 @@
             gap: 40px;
         }
 
-        /* Item Cards */
+        /* Cards for each menu item */
         .item-card {
             background: white;
             border-radius: 10px;
@@ -438,7 +440,7 @@
 
     <main>
         <section class="start-section">
-            <!-- Start Screen -->
+            <!-- Big welcome screen -->
             <div id="startScreen" class="category" style="display:block;">
                 <h1>Place Your Online Order</h1>
                 <p>Choose your favorites step by step.</p>
@@ -449,41 +451,41 @@
 
         <section class="order-section" style="display:none;">
 
-            <!-- Step 1: Coffee -->
+            <!-- Step 1: Pick your coffee -->
             <div id="coffeeCategory" class="category" style="display:block;">
                 <h2>☕ Choose Your Coffee</h2>
                 <div class="item-grid" id="coffeeGrid"></div>
                 <button onclick="nextCategory('smoothieCategory')">Next → Smoothies</button>
             </div>
 
-            <!-- Step 2: Smoothies -->
+            <!-- Step 2: Smoothie time -->
             <div id="smoothieCategory" class="category">
                 <h2>🥤 Choose Your Smoothies</h2>
                 <div class="item-grid" id="smoothieGrid"></div>
                 <button onclick="nextCategory('foodCategory')">Next → Food</button>
             </div>
 
-            <!-- Step 3: Food -->
+            <!-- Step 3: Food items -->
             <div id="foodCategory" class="category">
                 <h2>🥐 Choose Your Food</h2>
                 <div class="item-grid" id="foodGrid"></div>
                 <button onclick="nextCategory('infoForm')">Next → Checkout</button>
             </div>
 
-            <!-- Step 4: Customer info -->
+            <!-- Step 4: Tell us who you are -->
             <div id="infoForm" class="category">
                 <h2>👤 Your Information</h2>
 
                 <form id="orderForm">
-                    <!-- Name -->
+                    <!-- Basic info -->
                     <label for="name">Name:</label>
                     <input type="text" id="name" placeholder="Your name" required><br>
 
-                    <!-- Contact info -->
+                    <!-- How to reach you -->
                     <label for="phone">Phone Number:</label>
                     <input type="text" id="phone" placeholder="e.g. (617) 555-1234" required><br>
 
-                    <!-- Payment method -->
+                    <!-- How you want to pay -->
                     <label>Payment Method:</label>
                     <input type="checkbox" name="payment" value="credit"> 💳 Credit/Debit Card
                     <input type="checkbox" name="payment" value="paypal"> 🅿️ PayPal
@@ -510,7 +512,7 @@
     </footer>
 
     <script>
-        // Array of JavaScript objects
+        // All our menu items in arrays
         const coffeeItems = [
             { name: "Vanilla Latte", price: 5, img: "images/vanillalatte.jpg" },
             { name: "Americano", price: 4, img: "images/americano.jpg" },
@@ -529,7 +531,7 @@
             { name: "Croissant", price: 3.5, img: "images/Croissant.jpg" }
         ];
 
-        // Utility to render each category
+        // Creates HTML cards for menu items
         function renderItems(array, containerId) {
             const container = document.getElementById(containerId);
             array.forEach(item => {
@@ -545,11 +547,12 @@
             });
         }
 
+        // Put all the items on their respective pages
         renderItems(coffeeItems, "coffeeGrid");
         renderItems(smoothieItems, "smoothieGrid");
         renderItems(foodItems, "foodGrid");
 
-        // Hide all categories smoothly
+        // Smooth category switching
         function showCategory(nextId) {
             document.querySelectorAll(".category").forEach(div => {
                 div.classList.remove("active");
@@ -561,7 +564,7 @@
             setTimeout(() => next.classList.add("active"), 10);
         }
 
-        // Start Order button
+        // When someone clicks "Start Order"
         document.getElementById("startOrderBtn").onclick = function () {
             const start = document.getElementById("startScreen");
             const orderSection = document.querySelector(".order-section");
@@ -580,12 +583,12 @@
             showCategory(nextId);
         }
 
-        // Home-grown object
+        // Customer object to track order info
         const customer = {
             name: "",
             total: 0,
             greet() {
-                // popup thank-you message
+                // Show success message
                 alert(`Thank you, ${this.name}! Your total is $${this.total.toFixed(2)}.`);
                 // also show message on the page
                 document.getElementById("thankYouMessage").innerText =
@@ -593,7 +596,7 @@
             }
         };
 
-        // Function for form validation
+        // Make sure form is filled out correctly
         function validateForm() {
             const name = document.getElementById("name").value.trim();
             const paymentOptions = document.querySelectorAll('input[name="payment"]:checked');
@@ -612,7 +615,7 @@
         }
 
 
-        // Calculate total
+        // Add up the bill
         function calculateTotal() {
             let total = 0;
             [...coffeeItems, ...smoothieItems, ...foodItems].forEach(item => {
@@ -622,7 +625,7 @@
             return total;
         }
 
-        // DOM handling + event
+        // Handle form submission
         document.getElementById("orderForm").onsubmit = function (event) {
             event.preventDefault();
             if (validateForm()) {
