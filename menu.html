@@ -258,6 +258,7 @@
 
     <script>
         // Referenced this article for class creation: https://www.w3schools.com/js/js_classes.asp
+        // Define menuItem class for manual food/drink input
         class menuItem {
             constructor(name, small, large) {
                 this.name = name;
@@ -266,6 +267,7 @@
             }
         }
         // Referenced article for reading in json: https://www.geeksforgeeks.org/javascript/read-json-file-using-javascript/
+        // Read in menu.json then populate page
         let menu;
         fetch("menu.json")
             .then(response => response.json())
@@ -289,6 +291,7 @@
                 const radioLabels = document.querySelectorAll(".menu-options-box label");
                 const coffeePic = document.querySelector(".coffee-pic");
                 
+                // Make radio button labels clickable to select categories (coffee, smoothies, or food)
                 radioLabels.forEach((button, index) => {
                     button.onclick = () => {
                     radioButtons[index].checked = true;
@@ -307,7 +310,7 @@
             }) 
             .catch(error => console.error('Error:', error));
 
-
+        // Populate menu based on selected category
         function populateMenu(type, unorderedList) {
             // Clear current list
             unorderedList.innerHTML = "";
@@ -331,6 +334,7 @@
 
                 const itemsList = document.createElement("ul");
 
+                // Create rows of menu
                 Object.keys(menu[type][category]).forEach(item => {
                     const liEntry = document.createElement("li");
                     const itemSpan = document.createElement("span");
@@ -347,6 +351,7 @@
                         const keys = Object.keys(itemData);
                         const values = Object.values(itemData);
                         
+                        // Populate rows of menu with item information
                         values.forEach((price, index) => {
                             const sizeKey = keys[index];
                             let sizeLabel = '';
